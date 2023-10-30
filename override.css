@@ -4,7 +4,6 @@ body {
     Source Han Sans SC, Noto Sans CJK SC, WenQuanYi Micro Hei, sans-serif !important;
 }
 
-
 /* 内容删除横线 */
 .del-content {
   text-decoration-line: line-through;
@@ -15,7 +14,6 @@ body {
   display: inline-block;
   transform: scale(1.1);
 }
-
 
 /* 自定义图像 */
 .custom-figcaption {
@@ -38,9 +36,8 @@ body {
   content: attr(data-content);
 }
 .custom-figcaption::before {
-  font-weight: bold;  
+  font-weight: bold;
 }
-
 
 /* 代码格式化 */
 .custom-code {
@@ -162,7 +159,6 @@ p.warning::before {
   text-shadow: 0 0 0.25px currentcolor;
 }
 
-
 /* 自定义引用列表panel样式 */
 .dfn-paneled + span > aside.dfn-panel {
   border-radius: 8px;
@@ -181,7 +177,6 @@ p.warning::before {
   display: none;
 }
 
-
 .IPA {
   color: #202122;
   line-height: 1.6;
@@ -193,4 +188,26 @@ p.warning::before {
     "Chrysanthi Unicode", "GentiumAlt", "Bitstream Vera", "Bitstream Cyberbit",
     "Hiragino Kaku Gothic Pro", "Lucida Grande", sans-serif !important;
   text-decoration: none !important;
+}
+
+/* 隐藏文档状态英文 */
+#sotd > p:nth-child(8) {
+  display: none;
+}
+#sotd > p:nth-child(9) {
+  display: none;
+}
+#sotd > p:nth-child(10) {
+  display: none;
+}
+#sotd > p:nth-child(11) {
+  display: none;
+}
+
+/* 隐藏一致性英文 */
+#conformance > p:nth-child(2) {
+  display: none;
+}
+#conformance > p:nth-child(3) {
+  display: none;
 }

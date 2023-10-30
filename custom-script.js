@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: custom-script.js                                                     *
  * @Date: 2023-10-27 02:02:19                                                  *
- * @LastModifiedDate: 2023-10-27 15:30:30                                      *
+ * @LastModifiedDate: 2023-10-30 17:21:20                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2023 mangwu                                                   *
@@ -138,7 +138,7 @@ function translatePanel(dfn) {
 /**
  * @description 翻译目录英文部分
  */
-function tranlateToc() {
+function translateToc() {
   // const tocTitle = getElement("#contents");
   // tocTitle.textContent = "目录";
   const tocJump = getElement("#toc-jump > span + span");
@@ -199,31 +199,13 @@ function translateDfnType(originDfn) {
   }
 }
 /**
- * @description 翻译索引
+ * @description 翻译标题
  */
-function tranlateIndex() {
-  // 目录
-  tranlateIndexBySeletor("a[href='#index'] .content", "索引");
-  tranlateIndexBySeletor(
-    "a[href='#index-defined-here'] .content",
-    "本规范定义的术语"
-  );
-  tranlateIndexBySeletor(
-    "a[href='#index-defined-elsewhere'] .content",
-    "引用其他规范定义的术语"
-  );
+function translateTitle() {
   // 标题
-  tranlateIndexBySeletor("#index .content", "索引");
-  tranlateIndexBySeletor("#index-defined-here .content", "本规范定义的术语");
-  tranlateIndexBySeletor(
-    "#index-defined-elsewhere .content",
-    "引用其他规范定义的术语"
-  );
-
-  // 内容
-  const eles = getElements(".index li a[data-link-type='biblio']");
-  for (const ele of eles) {
-    ele.nextSibling.nodeValue = "定义了以下术语: \n";
+  const element = getElement("#x2-conformance");
+  if (element && element.childNodes.length > 1) {
+    element.childNodes[1].textContent = "一致性";
   }
 }
 
@@ -300,7 +282,7 @@ function addZhTime() {
   }
 }
 
-function tranlateMetaData() {
+function translateMetaData() {
   tranlateIndexBySeletor("details > summary", "有关此文档的更多详细信息");
   // tranlateIndexBySeletor("details > div > dl dt:nth-child(1)", "本版本: ");
   // tranlateIndexBySeletor(
@@ -309,18 +291,41 @@ function tranlateMetaData() {
   // );
 }
 
+const dfnMap = new Map([
+  ["touch point", "触摸点"],
+  ["active touch point", "活跃触摸点"],
+  // ["identifier", "标识符"],
+]);
+function translateInternalDFN() {
+  const links = document.querySelectorAll("a.internalDFN");
+  links.forEach((v) => {
+    if (v.classList.length === 1) {
+      if (v.children.length) {
+        // 有非文本节点的子元素
+        const enKey = v.children[0].textContent;
+        if (dfnMap.has(enKey)) v.children[0].textContent = dfnMap.get(enKey);
+      } else {
+        // 直接的文本节点
+        v.textContent = dfnMap.get(v.textContent) || v.textContent;
+      }
+    }
+  });
+}
 
 window.addEventListener("load", () => {
   // 监听<head>
   const head = document.querySelector("head");
-  const mutationObserver = new MutationObserver((mutations) => {
+  const mutationObserver = new MutationObserver((mutations, observer) => {
     outer: for (const mutation of mutations) {
       for (const removeNode of mutation.removedNodes) {
         if (removeNode.id === "fixuphook") {
           tryCatch(figureAllChange, "figureAllChange方法执行错误:");
           tryCatch(translatePanels, "translatePanels方法执行错误:");
-          tryCatch(tranlateToc, "tranlateToc方法执行错误:");
-          tryCatch(tranlateMetaData, "tranlateMetaData方法执行错误:");
+          tryCatch(translateToc, "translateToc方法执行错误:");
+          tryCatch(translateMetaData, "translateMetaData方法执行错误:");
+          tryCatch(translateTitle, "translateTitle方法执行错误:");
+          tryCatch(translateInternalDFN, "translateInternalDFN方法执行错误:");
+          observer.disconnect();
           break outer;
         }
       }
