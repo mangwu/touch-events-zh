@@ -203,6 +203,9 @@ p.warning::before {
 #sotd > p:nth-child(11) {
   display: none;
 }
+#sotd > p:nth-child(12) {
+  display: none;
+}
 
 /* 隐藏一致性英文 */
 #conformance > p:nth-child(2) {

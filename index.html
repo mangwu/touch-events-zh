@@ -516,7 +516,7 @@ interface Touch {
           <code>altitudeAngle</code> 属性的定义不同，后者属性的默认值为 π/2 ，
           即将传感器(默认)定位为垂直于平面。
         </div>
-        
+
         <figure id="figure_altitudeAngle">
           <img src="images/altitudeAngle.png" alt="altitudeAngle属性解释图例" />
           <figcaption>
@@ -528,12 +528,12 @@ interface Touch {
       <dd>
         <p>
           表示传感器(transducer，例如电子笔/手写笔)的方位角(以弧度为单位)，
-          范围为 [0，2π] — 其中 0 值表示: 一个传感器，其笔帽指向 X-Y 平面上 X 
+          范围为 [0，2π] — 其中 0 值表示: 一个传感器，其笔帽指向 X-Y 平面上 X
           值增加的方向(如果向下看，则指向 "3点钟" 方向)，顺时针方向时，
-          值逐渐增加( "6点钟" 处值为的 π/2 ， "9点钟" 处值为 π ， "12点钟" 
-          处值为 3π/2 )。当传感器完全垂直于表面(俯仰角，也就是 
+          值逐渐增加( "6点钟" 处值为的 π/2 ， "9点钟" 处值为 π ， "12点钟"
+          处值为 3π/2 )。当传感器完全垂直于表面(俯仰角，也就是
           <code>altitudeAngle</code> 为 π/2 )时，该值 <span class="zh-upper">
-            必须</span> 为 0 。对于不报告倾斜或角度的硬件和平台，该值 
+            必须</span> 为 0 。对于不报告倾斜或角度的硬件和平台，该值
           <span class="zh-upper">必须</span> 为 0 。
         </p>
         <figure id="figure_azimuthAngle">
@@ -545,41 +545,43 @@ interface Touch {
       </dd>
       <dt><dfn>touchType</dfn></dt>
       <dd>
-        <p>The type of device used to trigger the touch.</p>
+        <p>用于触发触摸的设备类型。</p>
       </dd>
     </dl>
     <dl>
       <dt><dfn>TouchType</dfn></dt>
       <dd>
         <p>
-          An enumeration representing the different types of possible touch
-          input.
+          枚举类型，表示触摸输入可能的不同类型。
         </p>
       </dd>
     </dl>
     <dl data-dfn-for="TouchType" data-link-for="TouchType">
       <dt><dfn>direct</dfn></dt>
       <dd>
-        <p>A direct touch from a finger on the screen.</p>
+        <p>
+          TouchType 枚举的一种触摸输入类型，字符串，表示手指在屏幕上的直接触摸。
+        </p>
       </dd>
       <dt><dfn>stylus</dfn></dt>
       <dd>
-        <p>A touch from a stylus or pen device.</p>
+        <p>
+          TouchType 枚举的一种触摸输入类型，字符串，表示手写笔或电子笔设备的触摸。
+        </p>
       </dd>
     </dl>
   </section>
 
   <section>
-    <h2><dfn>TouchList</dfn> Interface</h2>
+    <h2><dfn>TouchList</dfn> 接口</h2>
     <p>
-      This interface defines a list of individual points of contact for a
-      touch event. <a><code>TouchList</code></a> objects are immutable; after
-      one is created, its contents must not change.
+      该接口定义了触摸事件的各个(individual)接触点的列表。
+      <a><code>TouchList</code></a> 对象是不可变的(immutable); 创建后，
+      其内容不得更改。
     </p>
     <p>
-      A <code>TouchList</code> object's
-      <em>supported property indices</em> ([[!WEBIDL]]) are the numbers in the
-      range 0 to one less than the length of the list.
+      一个 <code>TouchList</code> 对象 <em>支持的属性索引</em> ([[!WEBIDL]])
+      是 0 到比列表长度小 1 之间的数字。
     </p>
     <pre class="idl">
 [Exposed=Window]
@@ -592,38 +594,38 @@ interface TouchList {
       <dt><dfn>length</dfn></dt>
       <dd>
         <p>
-          Returns the number of <a><code>Touch</code></a> objects in the list
+          返回列表中 <a><code>Touch</code></a> 对象的数量
         </p>
       </dd>
       <dt><dfn>item</dfn></dt>
       <dd>
         <p>
-          Returns the <a><code>Touch</code></a> at the specified index in the
-          list or null if the index is not less than the length of the list.
+          返回列表中指定索引处的 <a><code>Touch</code></a> 对象，
+          如果传递的索引值不小于列表长度，则返回 <code>null</code> 。
         </p>
       </dd>
     </dl>
   </section>
 
   <section>
-    <h2><dfn>TouchEvent</dfn> Interface</h2>
+    <h2><dfn>TouchEvent</dfn> 接口</h2>
     <p>
-      This interface defines the <a><code>touchstart</code></a>, <a><code>touchend</code></a>,
-      <a><code>touchmove</code></a>, and <a><code>touchcancel</code></a> event types.
-      <a><code>TouchEvent</code></a> objects are immutable; after one is
-      created and initialized, its attributes must not change.
-      <code>TouchEvent</code> inherits from the <code>UIEvent</code> interface
-      defined in [[!DOM-LEVEL-3-EVENTS]].
+      此接口定义了 <a><code>touchstart</code></a> 、
+      <a><code>touchend</code></a> 、 <a><code>touchmove</code></a> 和
+      <a><code>touchcancel</code></a> 事件类型。 <a><code>TouchEvent</code></a>
+      对象是不可变的(immutable); 创建并初始化一个后，其属性不得更改。
+      <code>TouchEvent</code> 继承自 [[!DOM-LEVEL-3-EVENTS]] 中定义的
+      <code>UIEvent</code> 接口。
     </p>
     <p>
-      The <dfn>TouchEventInit</dfn> dictionary is used by the
-      <code>TouchEvent</code> interface's constructor to provide a mechanism
-      by which to construct untrusted (synthetic) touch events. It inherits
-      from the <code>EventModifierInit</code> dictionary defined in
-      [[!DOM-LEVEL-3-EVENTS]]. The steps for constructing an event are defined
-      in [[!DOM4]]. See the
-      <a href="#firing-a-synthetic-touchevent-from-script" title="examples">example</a>
-      for sample code demonstrating how to fire an untrusted touch event.
+      <code>TouchEvent</code> 接口的构造函数使用 <dfn>TouchEventInit</dfn>
+      字典提供的一种机制(mechanism)，来构造不可信(合成)的触摸事件。
+      它继承自 [[!DOM-LEVEL-3-EVENTS]] 中定义的 <code>EventModifierInit</code>
+      字典。 [[!DOM4]] 中定义了构建事件的步骤。
+      有关演示如何触发不可信的触摸事件的示例代码，请参阅该
+      <a href="#firing-a-synthetic-touchevent-from-script" title="examples">
+        示例
+      </a> 。
     </p>
     <pre class="idl">
 dictionary TouchEventInit : EventModifierInit {
@@ -649,122 +651,131 @@ interface TouchEvent : UIEvent {
       <dt><dfn>touches</dfn></dt>
       <dd>
         <p>
-          A list of <a><code>Touch</code></a> objects for every point of
-          contact currently touching the surface.
+          表示当前触摸平面上的每个接触点的 <a><code>Touch</code></a> 对象列表。
         </p>
+        <div class="note custom-note">
+          一个 <a><code>TouchList</code></a> ，
+          其会列出所有当前在与触摸表面接触的 <a><code>Touch</code></a> 对象，
+          不管触摸点是否已经改变或其目标元素是在处于
+          <a><code>touchstart</code></a> 阶段。
+        </div>
       </dd>
       <dt><dfn>targetTouches</dfn></dt>
       <dd>
         <p>
-          A list of <a><code>Touch</code></a> objects for every point of
-          contact that is touching the surface <em>and</em> started on the
-          element that is the target of the current event.
+          每个接触点的 <a><code>Touch</code></a> 对象列表，
+          这些接触点正在接触触摸平面 <em>并且</em>
+          是从当前事件目标的元素上开始的。
         </p>
+        <div class="note custom-note">
+          所谓 "从当前事件目标的元素上开始的" 的意思就是: 这些接触点触发的
+          <code>touchstart</code> 事件发生在与当前触发的触摸事件相同的目标元素内。
+        </div>
       </dd>
       <dt><dfn>changedTouches</dfn></dt>
       <dd>
         <p>
-          A list of <a><code>Touch</code></a> objects for every point of
-          contact which contributed to the event.
+          为事件做出贡献(contributed)的每个接触点的 <a><code>Touch</code></a>
+          对象列表。
         </p>
         <p>
-          For the <a><code>touchstart</code></a> event this must be a list of
-          the touch points that just became active with the current event. For
-          the <a><code>touchmove</code></a> event this must be a list of the
-          touch points that have moved since the last event. For the
-          <a><code>touchend</code></a> and
-          <a><code>touchcancel</code></a> events this must be a list of the
-          touch points that have just been removed from the surface, with the
-          last known coordinates of the touch points before they were removed.
+          对于 <a><code>touchstart</code></a> 事件，(该属性的值)
+          必须是与当前事件一起刚刚激活(active)的触摸点的列表。
+          对于 <a><code>touchmove</code></a> 事件，(该属性的值)
+          必须是自上次事件发生以来产生移动的触摸点的列表。对于
+          <a><code>touchend</code></a> 和 <a><code>touchcancel</code></a> 事件，
+          (该属性的值)必须是刚刚从触摸平面移开的触摸点的列表，
+          这些触摸点附带最后移除之前已知坐标信息。
         </p>
       </dd>
 
       <dt><dfn>altKey</dfn></dt>
       <dd>
         <p>
-          <code>true</code> if the alt (Alternate) key modifier is activated;
-          otherwise <code>false</code>
+          如果 alt (Alternate)修饰符键被激活，则为 <code>true</code> ; 否则为
+          <code>false</code>
         </p>
       </dd>
       <dt><dfn>metaKey</dfn></dt>
       <dd>
         <p>
-          <code>true</code> if the meta (Meta) key modifier is activated;
-          otherwise <code>false</code>. On some platforms this attribute may
-          map to a differently-named key modifier.
+          如果 meta (Meta)修饰符键被激活，则为 <code>true</code> ; 否则为
+          <code>false</code> 。在某些平台上，
+          此属性可能映射到名称不同的修饰符按键。
         </p>
       </dd>
       <dt><dfn>ctrlKey</dfn></dt>
       <dd>
         <p>
-          <code>true</code> if the ctrl (Control) key modifier is activated;
-          otherwise <code>false</code>
+          如果 ctrl (Control)修饰符键被激活，则为 <code>true</code> ; 否则为
+          <code>false</code>
         </p>
       </dd>
       <dt><dfn>shiftKey</dfn></dt>
       <dd>
         <p>
-          <code>true</code> if the shift (Shift) key modifier is activated;
-          otherwise <code>false</code>
+          如果 shift (Shift)修饰符键被激活，则为 <code>true</code> ; 否则为
+          <code>false</code>
         </p>
       </dd>
       <dt><dfn>getModifierState</dfn>(keyArg)</dt>
       <dd>
         <p>
-          Queries the state of a modifier using a key value. Returns
-          <code>true</code> if it is a modifier key and the modifier is
-          activated, <code>false</code> otherwise.
+          使用键值查询修饰符按键的状态。
+          如果它是修饰符按键并且该修饰符按键处于激活状态，则返回
+          <code>true</code> ，否则返回 <code>false</code> 。
         </p>
+        <div class="note custom-note">
+          关于修饰符按键(key modifier)以及键值，可以参阅 [[UIEVENTS]] 和
+          [[UIEvents-Key]] 。
+        </div>
+
       </dd>
     </dl>
 
     <section class="informative">
-      <h2>TouchEvent Implementer's Note</h2>
+      <h2>TouchEvent 接口实现者的注释</h2>
       <div class="note">
         <p>
-          User agents should ensure that all <a><code>Touch</code></a> objects
-          available from a given <a><code>TouchEvent</code></a> are all
-          associated to the same document that the
-          <a><code>TouchEvent</code></a> was dispatched to. To implement this,
-          user agents should maintain a notion of the current
-          <em>touch-active</em> document. On first touch, this is set to the
-          target document where the touch was created. When all active touch
-          points are released, the <em>touch-active</em> document is cleared.
-          All <a><code>TouchEvent</code></a>s are dispatched to the current <em>touch-active</em> document, and
-          each <a><code>Touch</code></a> object it contains refers only to DOM
-          elements (and co-ordinates) in that document. If a touch starts
-          entirely outside the currently <em>touch-active</em> document, then
-          it is ignored entirely.
+          用户代理应确保来自给定 <a><code>TouchEvent</code></a> 中的所有可用 
+          <a><code>Touch</code></a> 对象都与 <a><code>TouchEvent</code></a> 
+          被派发到的同一文档相关联。为了实现这一点，用户代理应保留当前
+          <em>触摸活动(touch-active)</em> 文档的概念(notion)。在第一次触摸时，
+          它(当前 <em>触摸活动(touch-active)</em> 文档)
+          被设置为创建触摸的目标文档。当释放完所有活跃的触摸点后，
+          <em>触摸活动(touch-active)</em> 文档将被清除。
+          所有 <a><code>TouchEvent</code></a> 都被派发到当前 
+          <em>触摸活动(touch-active)</em> 文档，并且它(触摸事件)包含的每个 
+          <a><code>Touch</code></a> 对象仅引用该文档中的 DOM 元素(和坐标信息)。
+          如果触摸完全在当前 <em>触摸活动(touch-active)</em> 文档之外开始，
+          则会完全忽略该触摸。
         </p>
       </div>
     </section>
 
     <section class="informative">
-      <h2>Usage Examples</h2>
+      <h2>用例</h2>
 
       <p>
-        The examples below demonstrate the relations between the different
-        <a><code>TouchList</code></a> members defined in a
-        <a><code>TouchEvent</code></a>.
+        下面的示例演示了 <a><code>TouchEvent</code></a> 中定义的不同 
+        <a><code>TouchList</code></a> 成员之间的关系。
       </p>
 
       <section>
         <h3>
-          <code>touches</code> and <code>targetTouches</code> of a
-          <a><code>TouchEvent</code></a>
+          一个 <a><code>TouchEvent</code></a> 的 <code>touches</code> 和 
+          <code>targetTouches</code>
         </h3>
 
         <p>
-          This example demonstrates the utility and relations between the
-          <code>touches</code> and <code>targetTouches</code> members defined
-          in the <a><code>TouchEvent</code></a>
-          interface. The following code will generate different output based
-          on the number of touch points on the touchable element and the
-          document:
+          此示例演示了<a><code>TouchEvent</code></a> 接口中定义的 
+          <code>touches</code> 和 <code>targetTouches</code> 成员之间的功能
+          (utility)和关系。以下代码将根据在可触摸元素(touchable element)
+          和文档上的触摸点数量生成不同的输出:
         </p>
-
+        
         <pre class="example">
-&lt;div id='touchable'&gt;This element is touchable.&lt;/div&gt;
+&lt;div id='touchable'&gt;这个元素是可触摸的。&lt;/div&gt;
 
 &lt;script&gt;
 document.getElementById('touchable').addEventListener('touchstart', function(ev) {
@@ -772,11 +783,10 @@ document.getElementById('touchable').addEventListener('touchstart', function(ev)
     if (ev.touches.item(0) == ev.targetTouches.item(0))
     {
         /**
-         * If the first touch on the surface is also targeting the
-         * "touchable" element, the code below should execute.
-         * Since targetTouches is a subset of touches which covers the
-         * entire surface, TouchEvent.touches >= TouchEvents.targetTouches
-         * is always true.
+         * 如果在触摸平面上的第一次触摸的目标元素就是 "可触摸" 元素，
+         * 则应执行以下代码。由于 targetTouches 是覆盖整个触摸平面的
+         * touches 的子集，因此 TouchEvent.touches >= TouchEvents.targetTouches
+         * 始终为 true 。
          */
 
         document.write('Hello Touch Events!');
@@ -785,8 +795,8 @@ document.getElementById('touchable').addEventListener('touchstart', function(ev)
     if (ev.touches.length == ev.targetTouches.length)
     {
         /**
-         * If all of the active touch points are on the "touchable"
-         * element, the length properties should be the same.
+         * 如果所有活跃触摸点都在 "可触摸" 元素上，
+         * 则长度属性应相同。
          */
 
         document.write('All points are on target element')
@@ -795,9 +805,9 @@ document.getElementById('touchable').addEventListener('touchstart', function(ev)
     if (ev.touches.length > 1)
     {
         /**
-         * On a single touch input device, there can only be one point
-         * of contact on the surface, so the following code can only
-         * execute when the terminal supports multiple touches.
+         * 在单点触摸输入设备上，触摸平面上只能有一个接触点，
+         * 因此只有当终端支持多点触摸时，
+         * 才能执行以下代码。
          */
 
         document.write('Hello Multiple Touch!');
