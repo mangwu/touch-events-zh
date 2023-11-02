@@ -737,15 +737,15 @@ interface TouchEvent : UIEvent {
       <h2>TouchEvent 接口实现者的注释</h2>
       <div class="note">
         <p>
-          用户代理应确保来自给定 <a><code>TouchEvent</code></a> 中的所有可用 
-          <a><code>Touch</code></a> 对象都与 <a><code>TouchEvent</code></a> 
+          用户代理应确保来自给定 <a><code>TouchEvent</code></a> 中的所有可用
+          <a><code>Touch</code></a> 对象都与 <a><code>TouchEvent</code></a>
           被派发到的同一文档相关联。为了实现这一点，用户代理应保留当前
           <em>触摸活动(touch-active)</em> 文档的概念(notion)。在第一次触摸时，
           它(当前 <em>触摸活动(touch-active)</em> 文档)
           被设置为创建触摸的目标文档。当释放完所有活跃的触摸点后，
           <em>触摸活动(touch-active)</em> 文档将被清除。
-          所有 <a><code>TouchEvent</code></a> 都被派发到当前 
-          <em>触摸活动(touch-active)</em> 文档，并且它(触摸事件)包含的每个 
+          所有 <a><code>TouchEvent</code></a> 都被派发到当前
+          <em>触摸活动(touch-active)</em> 文档，并且它(触摸事件)包含的每个
           <a><code>Touch</code></a> 对象仅引用该文档中的 DOM 元素(和坐标信息)。
           如果触摸完全在当前 <em>触摸活动(touch-active)</em> 文档之外开始，
           则会完全忽略该触摸。
@@ -757,23 +757,23 @@ interface TouchEvent : UIEvent {
       <h2>用例</h2>
 
       <p>
-        下面的示例演示了 <a><code>TouchEvent</code></a> 中定义的不同 
+        下面的示例演示了 <a><code>TouchEvent</code></a> 中定义的不同
         <a><code>TouchList</code></a> 成员之间的关系。
       </p>
 
       <section>
         <h3>
-          一个 <a><code>TouchEvent</code></a> 的 <code>touches</code> 和 
+          一个 <a><code>TouchEvent</code></a> 的 <code>touches</code> 和
           <code>targetTouches</code>
         </h3>
 
         <p>
-          此示例演示了<a><code>TouchEvent</code></a> 接口中定义的 
+          此示例演示了<a><code>TouchEvent</code></a> 接口中定义的
           <code>touches</code> 和 <code>targetTouches</code> 成员之间的功能
           (utility)和关系。以下代码将根据在可触摸元素(touchable element)
           和文档上的触摸点数量生成不同的输出:
         </p>
-        
+
         <pre class="example">
 &lt;div id='touchable'&gt;这个元素是可触摸的。&lt;/div&gt;
 
@@ -820,16 +820,14 @@ document.getElementById('touchable').addEventListener('touchstart', function(ev)
 
       <section>
         <h3>
-          <code>changedTouches</code> of a <a><code>TouchEvent</code></a>
+          一个 <a><code>TouchEvent</code></a> 的 <code>changedTouches</code>
         </h3>
 
         <p>
-          This example demonstrates the utility of
-          <code>changedTouches</code> and it's relation with the other
-          <a><code>TouchList</code></a> members of the
-          <a><code>TouchEvent</code></a> interface. The code is a example
-          which triggers whenever a touch point is removed from the defined
-          touchable element:
+          此示例演示了 <code>changedTouches</code> 的实用功能(utility)及其它与
+          <a><code>TouchEvent</code></a> 接口中的其他
+          <a><code>TouchList</code></a> 成员的关系。
+          该代码是一个，每当从定义好的可触摸元素中移除触摸点时就会触发的示例:
         </p>
 
         <pre class="example">
@@ -837,11 +835,10 @@ document.getElementById('touchable').addEventListener('touchstart', function(ev)
 
 &lt;script&gt;
 document.getElementById('touchable').addEventListener('touchend', function(ev) {
-
     /**
-     * Example output when three touch points are on the surface,
-     * two of them being on the "touchable" element and one point
-     * in the "touchable" element is lifted from the surface:
+     * 当三个触摸点在触摸平面上时的示例输出如下，
+     * 其中两个在 "可触摸" 元素上，
+     * 另一个点从 "可触摸的" 元素中的触摸表面抬起(移除):
      *
      * Touch points removed: 1
      * Touch points left on element: 1
@@ -859,12 +856,11 @@ document.getElementById('touchable').addEventListener('touchend', function(ev) {
 
       <section>
         <h3>
-          Firing a synthetic <a><code>TouchEvent</code></a> from script
+          触发来自于脚本合成的 <a><code>TouchEvent</code></a>
         </h3>
 
         <p>
-          This example demonstrates how to create and fire a
-          <a><code>TouchEvent</code></a> from script.
+          此示例演示如何创建和触发来自于脚本的 <a><code>TouchEvent</code></a> 。
         </p>
 
         <pre class="example">
@@ -901,14 +897,13 @@ document.body.dispatchEvent(touchEvent);
 
     <section class="informative">
       <h2>
-        List of <a><code>TouchEvent</code></a> types
+        <a><code>TouchEvent</code></a> 事件类型列表
       </h2>
 
       <p>
-        The following table provides a summary of the
-        <a><code>TouchEvent</code></a> event types defined in this
-        specification. All events should accomplish the bubbling phase. All
-        events should be composed [[WHATWG-DOM]] events.
+        下表提供了本规范中定义的 <a><code>TouchEvent</code></a> 事件类型的总结。
+        所有事件都应完成(accomplish)冒泡阶段。所有事件均应由 [[WHATWG-DOM]]
+        事件构成(be composed)。
       </p>
 
       <!--
@@ -920,14 +915,15 @@ document.body.dispatchEvent(touchEvent);
       <table class="simple" id="table-event-summary">
         <thead>
           <tr>
-            <th>Event Type</th>
-            <th>Sync / Async</th>
-            <th>Bubbling phase</th>
-            <th>Composed</th>
-            <th>Trusted proximal event target types</th>
-            <th>Interface</th>
-            <th>Cancelable</th>
-            <th>Default Action</th>
+            <th>事件类型</th>
+            <th>同步 / 异步</th>
+            <th>冒泡阶段</th>
+            <th>能否从Shadow
+              DOM冒泡传递(composed)</th>
+            <th>可信近端事件目标对象类型</th>
+            <th>接口</th>
+            <th>可取消默认行为</th>
+            <th>默认行为</th>
           </tr>
         </thead>
         <tbody>
@@ -935,252 +931,249 @@ document.body.dispatchEvent(touchEvent);
             <th scope="row">
               <a><code>touchstart</code></a>
             </th>
-            <td>Sync</td>
-            <td>Yes</td>
-            <td>Yes</td>
+            <td>同步</td>
+            <td>能</td>
+            <td>能</td>
             <td><code>Document</code>, <code>Element</code></td>
             <td>
               <a><code>TouchEvent</code></a>
             </td>
-            <td><a href="#cancelability">Varies</a></td>
-            <td>undefined</td>
+            <td><a href="#cancelability">多种(Varies)</a></td>
+            <td>未定义</td>
           </tr>
           <tr>
             <th scope="row">
               <a><code>touchend</code></a>
             </th>
-            <td>Sync</td>
-            <td>Yes</td>
-            <td>Yes</td>
+            <td>同步</td>
+            <td>能</td>
+            <td>能</td>
             <td><code>Document</code>, <code>Element</code></td>
             <td>
               <a><code>TouchEvent</code></a>
             </td>
-            <td><a href="#cancelability">Varies</a></td>
+            <td><a href="#cancelability">多种(Varies)</a></td>
             <td>
-              Varies: user agents may dispatch
-              <a href="#mouse-events">mouse and click events</a>
+              多种(Varies): 用户代理可以派发
+              <a href="#mouse-events">鼠标和点击事件</a>
             </td>
           </tr>
           <tr>
             <th scope="row">
               <a><code>touchmove</code></a>
             </th>
-            <td>Sync</td>
-            <td>Yes</td>
-            <td>Yes</td>
+            <td>同步</td>
+            <td>能</td>
+            <td>能</td>
             <td><code>Document</code>, <code>Element</code></td>
             <td>
               <a><code>TouchEvent</code></a>
             </td>
-            <td><a href="#cancelability">Varies</a></td>
-            <td>undefined</td>
+            <td><a href="#cancelability">多种(Varies)</a></td>
+            <td>未定义</td>
           </tr>
           <tr>
             <th scope="row">
               <a><code>touchcancel</code></a>
             </th>
-            <td>Sync</td>
-            <td>Yes</td>
-            <td>Yes</td>
+            <td>同步</td>
+            <td>能</td>
+            <td>能</td>
             <td><code>Document</code>, <code>Element</code></td>
             <td>
               <a><code>TouchEvent</code></a>
             </td>
-            <td>No</td>
-            <td>none</td>
+            <td>不可</td>
+            <td>没有</td>
           </tr>
         </tbody>
       </table>
     </section>
 
     <section>
-      <h3 id="cancelability">Cancelability of touch events</h3>
+      <h3 id="cancelability">触摸事件的可取消性(Cancelability)</h3>
       <p>
-        <a href="#dfn-canceled-event">Canceling</a> a touch event can prevent
-        or otherwise interrupt scrolling (which could be happening in parallel
-        with script execution). For maximum scroll performance, a user agent
-        may not wait for each touch event associated with the scroll to be
-        processed to see if it will be canceled. In such cases the user agent
-        should generate touch events whose <code>cancelable</code> property is
-        <code>false</code>, indicating that <code>preventDefault</code> cannot
-        be used to prevent or interrupt scrolling. Otherwise
-        <code>cancelable</code> will be <code>true</code>.
+        <a href="#dfn-canceled-event">取消</a> (调用
+        <code>preventDefault</code> )触摸事件可以阻止或中断(interrupt)滚动
+        (滚动可能与脚本执行并行发生)。为了获得最大的滚动性能，
+        用户代理可能不会等待每个与滚动相关联的触摸事件被处理完毕
+        (检阅滚轮事件是否被取消)才派发事件。在这种情况下，
+        用户代理应该生成 <code>cancelable</code> 属性为 <code>false</code>
+        的触摸事件，表明 <code>preventDefault</code> 不能用于阻止或中断滚动。
+        否则 <code>cancelable</code> 属性将为 <code>true</code> 。
       </p>
       <p>
-        In particular, a user agent should generate only uncancelable touch
-        events when it
-        <a href="https://dom.spec.whatwg.org/#observing-event-listeners">observes that there are no non-passive
-          listeners</a>
-        for the event.
+        特别是，当用户代理发现事件
+        <a href="https://dom.spec.whatwg.org/#observing-event-listeners">
+          没有非被动监听器(non-passive listeners)</a> 时，它应该只生成不可取消
+        (uncancelable)的触摸事件。
       </p>
+
+      <div class="note custom-note">
+        在 [[DOM]] 中的 <code>EventTarget</code> 接口中介绍了
+        <code>addEventListener()</code> 方法的第三个参数，它的字典定义有一个
+        <code>passive</code> 属性，表示事件监听器是否永远不会调用
+        <code>preventDefault</code> ，非被动监听器(non-passive listeners)就是
+        <code>passive</code> 设置为 <code>false</code> (默认值)的事件监听器，
+        它表示事件可被取消; 再理解上面的话，特意设置 <code>passive</code> 属性为
+        <code>true</code> ，那么实现只会生成不可取消的触摸事件。
+      </div>
     </section>
 
     <section>
       <h3 id="event-touchstart">
-        The <dfn class="event"><code>touchstart</code></dfn> event
+        <dfn class="event"><code>touchstart</code></dfn> 事件
       </h3>
       <p>
-        A user agent must dispatch this event type to indicate when the user
-        places a <a>touch point</a> on the touch surface.
+        当用户放置 <a>touch point</a> 在触摸表面上时，
+        用户代理必须派发此事件类型的事件以示意(indicate)。
       </p>
 
       <p>
-        The target of this event must be an <code>Element</code>. If the touch
-        point is within a frame, the event should be dispatched to an element
-        in the child browsing context of that frame.
+        此事件的事件目标必须是 <code>Element</code> 。如果触摸点在一个框架(frmae，
+        &gt;iframe&lt; 表示嵌套的浏览上下文)内，
+        则应将事件派发到该框架的在子浏览上下文中的元素。
       </p>
 
       <p>
-        If this event is <a href="#dfn-canceled-event">canceled</a>, it should
-        prevent any default actions caused by any touch events associated with
-        the same <a>active touch point</a>, including mouse events or
-        scrolling.
+        如果此事件被 <a href="#dfn-canceled-event">取消</a> ，
+        则应阻止由与同一 <a>active touch point</a>
+        关联的任何触摸事件引起的任何默认操作，包括鼠标事件或滚动。
       </p>
     </section>
 
     <section data-link-for="TouchEvent">
       <h3 id="event-touchend">
-        The <dfn class="event"><code>touchend</code></dfn> event
+        <dfn class="event"><code>touchend</code></dfn> 事件
       </h3>
       <p>
-        A user agent must dispatch this event type to indicate when the user
-        removes a <a>touch point</a> from the touch surface, also including
-        cases where the touch point physically leaves the touch surface, such
-        as being dragged off of the screen.
+        当用户从触摸平面移除一个 <a>touch point</a> 时，
+        用户代理必须派发此事件类型的事件以示意(indicate)，
+        除此之外，触摸点物理离开触摸平面的情况(例如被拖离屏幕)也会触发此事件。
       </p>
 
       <p>
-        The target of this event must be the same <code>Element</code> on
-        which the <a>touch point</a> started when it was first placed on the
-        surface, even if the <a>touch point</a> has since moved outside the
-        interactive area of the target element.
+        该事件的事件目标必须是 <a>touch point</a>
+        从第一次放置在触摸平面上时开始记录的同一 <code>Element</code> ，
+        即使 <a>touch point</a> 已经移动到目标元素的交互区域之外。
       </p>
 
       <p>
-        The <a>touch point</a> or points that were removed must be included in
-        the <a><code>changedTouches</code></a> attribute of the
-        <a><code>TouchEvent</code></a>, and must not be included in the <a><code>touches</code></a> and
-        <a><code>targetTouches</code></a>
-        attributes.
+        被移除的一个或多个 <a>touch point</a> 必须包含在
+        <a><code>TouchEvent</code></a> 的 <a><code>changedTouches</code></a>
+        属性中，而不能包含在 <a><code>touches</code></a> 和
+        <a><code>targetTouches</code></a> 属性中。
       </p>
 
       <p>
-        If this event is <a href="#dfn-canceled-event">canceled</a>, any
-        sequence of touch events that includes this event must not be
-        <a href="#click-events">interpreted as a click</a>.
+        如果此事件被 <a href="#dfn-canceled-event">取消</a> ，
+        则包括此事件的任何触摸事件序列都不得被
+        <a href="#click-events">解释为单击</a> 。
       </p>
     </section>
 
     <section>
       <h3 id="event-touchmove">
-        The <dfn class="event"><code>touchmove</code></dfn> event
+        <dfn class="event"><code>touchmove</code></dfn> 事件
       </h3>
       <p>
-        A user agent must dispatch this event type to indicate when the user
-        moves a <a>touch point</a> along the touch surface.
+        当前用户沿着触摸平面移动 <a>touch point</a> 时，
+        用户代理必须派发此事件类型的事件以示意(indicate)。
       </p>
 
       <p>
-        The target of this event must be the same <code>Element</code> on
-        which the <a>touch point</a> started when it was first placed on the
-        surface, even if the <a>touch point</a> has since moved outside the
-        interactive area of the target element.
+        该事件的事件目标必须是 <a>touch point</a>
+        从第一次放置在触摸平面上时开始记录的同一 <code>Element</code> ，
+        即使 <a>touch point</a> 已经移动到目标元素的交互区域之外。
       </p>
 
       <p>
-        Note that the rate at which the user agent sends
-        <a><code>touchmove</code></a>
-        events is implementation-defined, and may depend on hardware
-        capabilities and other implementation details.
+        请注意，用户代理发送 <a><code>touchmove</code></a>
+        事件的速率是由实现定义的(implementation-defined)，
+        并且(速率大小)可能取决于硬件功能和其他实现细节。
       </p>
 
       <p>
-        A user agent should suppress the default action caused by any
-        <a><code>touchmove</code></a> event until at least one
-        <a><code>touchmove</code></a> event associated with the same
-        <a>active touch point</a> is not
-        <a href="#dfn-canceled-event">canceled</a>. Whether the default action
-        is suppressed for <a><code>touchmove</code></a> events after at least
-        one <a><code>touchmove</code></a> event associated with the same
-        <a>active touch point</a> is not
-        <a href="#dfn-canceled-event">canceled</a> is implementation
-        dependent.
+        用户代理应该阻止(suppress)由任何 <a><code>touchmove</code></a>
+        事件引起的默认行为，直到与同一 <a>active touch point</a>
+        相关联的至少一个 <a><code>touchmove</code></a> 事件没有被
+        <a href="#dfn-canceled-event">取消</a> 为止。在与同一
+        <a>active touch point</a> 相关联的 <a><code>touchmove</code></a>
+        事件至少一个未被 <a href="#dfn-canceled-event">取消</a> 之后，
+        是否阻止(suppress) <a><code>touchmove</code></a>
+        事件的默认行为取决于实现。
       </p>
     </section>
 
     <section data-link-for="TouchEvent">
       <h3 id="event-touchcancel">
-        The <dfn class="event"><code>touchcancel</code></dfn> event
+        <dfn class="event"><code>touchcancel</code></dfn> 事件
       </h3>
       <p>
-        A user agent must dispatch this event type to indicate when a touch
-        point has been disrupted in an implementation-specific manner, such as
-        a synchronous event or action originating from the UA canceling the
-        touch, or the touch point leaving the document window into a
-        non-document area which is capable of handling user interactions (e.g.
-        the UA's native user interface, or an area of the document which is
-        managed by a plug-in). A user agent may also dispatch this event type
-        when the user places more <a>touch point</a>s on the touch surface
-        than the device or implementation is configured to store, in which
-        case the earliest <a><code>Touch</code></a> object in the
-        <a><code>TouchList</code></a> should be removed.
+        当一个触摸点以实现决定(implementation-specific)的方式被中断(disrupted)
+        时，用户代理必须派发该事件类型的事件以示意(indicate)，
+        中断方式有如源自用户代理取消触摸的同步事件或行为，
+        或者触摸点离开文档窗口进入能够处理用户交互的非文档(non-document)区域
+        (非文档区域指用户代理的本地用户界面，或由插件管理的文档区域等)。
+        当用户在触摸平面上放置的 <a>touch point</a>
+        多于设备或实现为存储触摸点配置的数量时，
+        用户代理也可以派发该事件类型的事件，在这种情况下，应该移除
+        <a><code>TouchList</code></a> 中最早的 <a><code>Touch</code></a> 对象。
       </p>
 
       <p>
-        The target of this event must be the same <code>Element</code> on
-        which the <a>touch point</a> started when it was first placed on the
-        surface, even if the <a>touch point</a> has since moved outside the
-        interactive area of the target element.
+        该事件的事件目标必须是 <a>touch point</a>
+        从第一次放置在触摸平面上时开始记录的同一 <code>Element</code> ，
+        即使 <a>touch point</a> 已经移动到目标元素的交互区域之外。
       </p>
 
       <p>
-        The <a>touch point</a> or points that were removed must be included in
-        the <a><code>changedTouches</code></a> attribute of the
-        <a><code>TouchEvent</code></a>, and must not be included in the <a><code>touches</code></a> and
-        <a><code>targetTouches</code></a>
-        attributes.
+        被移除的一个或多个 <a>touch point</a> 必须包含在
+        <a><code>TouchEvent</code></a> 的 <a><code>changedTouches</code></a>
+        属性中，而不能包含在 <a><code>touches</code></a> 和
+        <a><code>targetTouches</code></a> 属性内。
       </p>
     </section>
   </section>
 
   <section>
-    <h2>Retargeting</h2>
+    <h2>重新定位目标(Retargeting)</h2>
     <p>
-      The following section describes
-      <a href="https://dom.spec.whatwg.org/#event-retargeting-steps">retargeting steps</a>, defined in [[!WHATWG-DOM]].
+      以下部分介绍了 [[!WHATWG-DOM]] 中定义的
+      <a href="https://dom.spec.whatwg.org/#event-retargeting-steps">
+        重新定位目标的步骤</a> 。
     </p>
 
     <p>
-      <code>Touch</code> object has an associated
-      <dfn>unadjustedTarget</dfn> (null or <code>EventTarget</code>). Unless
-      stated otherwise it is null.
+      <code>Touch</code> 对象具有关联的 <dfn>unadjustedTarget</dfn>
+      (未重定向的目标，是 <code>null</code> 或 <code>EventTarget</code> )。
+      除非另有说明，否则就是 <code>null</code> 。
     </p>
 
     <p>
-      <code>TouchEvent</code>'s
-      <a href="https://dom.spec.whatwg.org/#event-retargeting-steps">retargeting steps</a>, given a
-      <var>touchEvent</var>, must run these steps:
+      <code>TouchEvent</code> 的
+      <a href="https://dom.spec.whatwg.org/#event-retargeting-steps">
+        重新定位目标的步骤</a> ，给定一个 <var>touchEvent</var> ，
+      必须运行如下步骤:
     </p>
     <ol>
       <li>
         <p>
-          For each <a><code>Touch</code></a> <var>touch</var> in
-          <var>touchEvent</var>'s <code>touches</code>,
-          <code>targetTouches</code>, and <code>changedTouches</code> members:
+          对于 <var>touchEvent</var> 对象的 <code>touches</code> 、
+          <code>targetTouches</code> 和 <code>changedTouches</code> 成员中的每个
+          <a><code>Touch</code></a> 对象:
         </p>
         <ol>
           <li>
-            Set <var>touch</var>'s <a><code>unadjustedTarget</code></a> to
-            <var>touch</var>'s <code>target</code> if <var>touch</var>'s
-            <a><code>unadjustedTarget</code></a> is null.
+            如果 <var>touch</var> 的 <a><code>unadjustedTarget</code></a> 为空，
+            则将 <var>touch</var> 的 <a><code>unadjustedTarget</code></a> 设置为
+            <var>touch</var> 的 <code>target</code> 。
           </li>
           <li>
-            Set <var>touch</var>'s <code>target</code> to the result of
-            invoking
-            <a href="https://dom.spec.whatwg.org/#retarget">retargeting</a>
-            <var>touch</var>'s <a><code>unadjustedTarget</code></a> against
-            <var>touchEvent</var>'s <code>target</code>.
+            将 <var>touch</var> 的 <code>target</code> 设置为针对
+            <var>touchEvent</var> 的目标调用
+            <a href="https://dom.spec.whatwg.org/#retarget">重定目标</a> 的
+            <var>touch</var> 的 <a><code>unadjustedTarget</code></a> 的结果。
           </li>
         </ol>
       </li>
@@ -1188,31 +1181,29 @@ document.body.dispatchEvent(touchEvent);
   </section>
 
   <section>
-    <h2>Conditionally exposing legacy touch event APIs</h2>
+    <h2>有条件地暴露遗留触摸事件</h2>
     <p>
-      User agents have an associated boolean
-      <dfn data-export="">expose legacy touch event APIs</dfn> whose value is
-      <a>implementation-defined</a>.
+      用户代理有一个关联的布尔类型 <dfn data-export="暴露遗留触摸事件API">
+        expose legacy touch event APIs</dfn> (暴露遗留触摸事件 APIs )，其值由
+      <a href="https://infra.spec.whatwg.org/#implementation-defined">
+        实现定义</a> 。
     </p>
 
     <p class="note">
-      Existing web content often use the existence of these APIs as a signal
-      that the user agent is a touch-enabled "mobile" device, and therefore
-      exposing these APIs on non-mobile devices, even if they are
-      touch-enabled, could lead to a suboptimal user experience for such web
-      content.
+      现有的网络内容通常使用这些 APIs 的存在作为用户代理是否支持触摸的
+      (touch-enabled) "移动" 设备的信号，因此在非移动设备上暴露这些 APIs ，
+      即使它们支持触摸，也可能导致此类网络内容的最适度下的(suboptimal)用户体验。
     </p>
   </section>
 
   <section>
-    <h2>Extensions to the <code>GlobalEventHandlers</code> mixin</h2>
+    <h2><code>GlobalEventHandlers</code> 混入(mixin)的扩展</h2>
     <p>
-      The following section describes extensions to the existing
-      <dfn data-cite="HTML5#globaleventhandlers">GlobalEventHandlers</dfn>
-      mixin, defined in [[!HTML5]], to facilitate the event handler
-      registration. For user agents where
-      <a>expose legacy touch event APIs</a> is false, this mixin must not be
-      implemented.
+      以下部分描述了在 [[!HTML5]] 中定义的现有 
+      <dfn data-cite="HTML5#globaleventhandlers">GlobalEventHandlers</dfn> 混入
+      (mixin)的扩展，以便于事件处理程序注册。对于 
+      <a href="#dfn-expose-legacy-touch-event-apis">暴露遗留触摸事件 APIs</a> 
+      为 <code>false</code> 的用户代理，不得实现此混入(mixin)。
     </p>
     <pre class="idl">
 partial interface mixin GlobalEventHandlers {
@@ -1226,115 +1217,106 @@ partial interface mixin GlobalEventHandlers {
       <dt><dfn>ontouchstart</dfn></dt>
       <dd>
         <p>
-          The event handler IDL attribute (see [[!HTML5]]) for the
-          <code>touchstart</code> event type.
+          <code>touchstart</code> 事件类型的事件处理程序 IDL 属性
+          (请参见 [[!HTML5]] )。
         </p>
       </dd>
       <dt><dfn>ontouchend</dfn></dt>
       <dd>
         <p>
-          The event handler IDL attribute (see [[!HTML5]]) for the
-          <code>touchend</code> event type.
+          <code>touchend</code> 事件类型的事件处理程序 IDL 属性
+          (请参见 [[!HTML5]] )。
         </p>
       </dd>
       <dt><dfn>ontouchmove</dfn></dt>
       <dd>
         <p>
-          The event handler IDL attribute (see [[!HTML5]]) for the
-          <code>touchmove</code> event type.
+          <code>touchmove</code> 事件类型的事件处理程序 IDL 属性
+          (请参见 [[!HTML5]] )。
         </p>
       </dd>
       <dt><dfn>ontouchcancel</dfn></dt>
       <dd>
         <p>
-          The event handler IDL attribute (see [[!HTML5]]) for the
-          <code>touchcancel</code> event type.
+          <code>touchcancel</code> 事件类型的事件处理程序 IDL 属性
+          (请参见 [[!HTML5]] )。
         </p>
       </dd>
     </dl>
   </section>
 
   <section id="mouse-events">
-    <h2>Interaction with Mouse Events and <code>click</code></h2>
+    <h2>与鼠标事件和 <code>click</code> 的交互(Interaction)</h2>
     <p>
-      The user agent may dispatch both touch events and (for compatibility
-      with web content not designed for touch) mouse events
-      [[!DOM-LEVEL-2-EVENTS]] in response to the same user input. If the user
-      agent dispatches both touch events and mouse events in response to a
-      single user action, then the <a><code>touchstart</code></a> event type
-      must be dispatched before any mouse event types for that action. If
-      <a><code>touchstart</code></a>, <a><code>touchmove</code></a>, or <a><code>touchend</code></a> are
-      <a href="#dfn-canceled-event">canceled</a>, the user agent should not
-      dispatch any mouse event that would be a consequential result of the
-      prevented touch event.
+      用户代理可以通过派发触摸事件和(为了与不是为触摸而设计的 Web 内容兼容)
+      鼠标事件 [[!DOM-LEVEL-2-EVENTS]] 响应相同的用户输入。
+      如果用户代理同时派发触摸事件和鼠标事件以响应一个用户的单个操作，
+      则必须为该操作触发的任何鼠标事件类型之前派发 
+      <a><code>touchstart</code></a> 事件类型的事件。如果 
+      <a href="#dfn-canceled-event">取消</a> 了 <a><code>touchstart</code></a> 
+      、 <a><code>touchmove</code></a> 或 <a><code>touchend</code></a> ，
+      用户代理不应派发任何可能因此也导致阻止鼠标事件的触摸事件
+      (部分触摸事件的取消会导致鼠标事件的取消，这属于间接结果——
+      consequential result)。
     </p>
 
     <p class="note">
-      If a Web application can process touch events, it can
-      <a href="#dfn-canceled-event">cancel</a> the events, and no
-      corresponding mouse events would need to be dispatched by the user
-      agent. If the Web application is not specifically written for touch
-      input devices, it will react to the subsequent mouse events instead.
+      如果一个 Web 应用程序可以处理触摸事件，它可以 
+      <a href="#dfn-canceled-event">取消</a> 这些事件，
+      并且用户代理不需要派发相应的鼠标事件。
+      如果 Web 应用程序不是专门为触摸输入设备编写的，
+      它将对随后的鼠标事件做出反应。
     </p>
 
     <p class="note">
-      User agents will typically dispatch mouse and click events only for
-      single-finger activation gestures (like tap and long press). Gestures
-      involving movement of the touch point or multi-touch interactions – with
-      two or more
-      <a href="#dfn-active-touch-point">active touch points</a> – will usually
-      only generate touch events.
+      用户代理通常只针对单指激活手势(如点击和长按)派发鼠标和点击事件。
+      涉及触摸点移动或多触摸(multi-touch)交互的手势 – 具有两个或多个
+      <a href="#dfn-active-touch-point">活跃触摸点</a> – 通常只会产生触摸事件。
     </p>
 
     <p id="click-events">
-      If the user agent interprets a sequence of touch events as a tap
-      gesture, then it should dispatch <code>mousemove</code>,
-      <code>mousedown</code>, <code>mouseup</code>, and
-      <code>click</code> events (in that order) at the location of the
-      <a><code>touchend</code></a> event for the corresponding touch input. If
-      the contents of the document have changed during processing of the touch
-      events, then the user agent may dispatch the mouse events to a different
-      target than the touch events.
+      如果用户代理将一系列触摸事件解释为轻触(tap)手势，
+      那么它应该在响应触摸输入的 <a><code>touchend</code></a> 事件的位置派发
+      <code>mousemove</code> 、 <code>mousedown</code> 、 <code>mouseup</code>
+      和 <code>click</code>事件(按顺序)。
+      如果文档的内容在触摸事件的处理期间已经改变，
+      则用户代理可以将鼠标事件派发到与触摸事件 <strong>不同</strong> 的目标上。
     </p>
 
     <p>
-      The default actions and ordering of any further touch and mouse events
-      are implementation-defined, except as specified elsewhere.
+      任何在更大程度上的触摸和鼠标事件的默认行为和顺序都是由实现定义的，
+      除非在别处详细指定。
     </p>
 
     <div class="note">
       <p>
-        The activation of an element (e.g., in some implementations, a tap)
-        would typically produce the following event sequence (though this may
-        vary slightly, depending on specific user agent behavior):
+        元素的激活(例如，在一些实现中，轻触)通常会产生以下事件序列
+        (尽管取决于特定的用户代理行为，可能会略有不同):
       </p>
       <ol data-class="note-list">
         <li><code>touchstart</code></li>
         <li>
-          Zero or more <code>touchmove</code> events, depending on movement of
-          the finger
+          零个或多个 <code>touchmove</code> 事件，具体取决于手指的移动
         </li>
         <li><code>touchend</code></li>
         <li>
           <code>mousemove</code>
-          <small>(for compatibility with legacy mouse-specific code)</small>
+          <small>(与遗留的鼠标特定的代码进行兼容)</small>
         </li>
         <li><code>mousedown</code></li>
         <li><code>mouseup</code></li>
         <li><code>click</code></li>
       </ol>
       <p>
-        If, however, either the <code>touchstart</code>,
-        <code>touchmove</code> or <code>touchend</code> event has been
-        <a href="#dfn-canceled-event">canceled</a> during this interaction, no
-        mouse or click events will be fired, and the resulting sequence of
-        events would simply be:
+        但是，如果在该交互过程中 <a href="#dfn-canceled-event">取消</a> 了 
+        <code>touchstart</code> 、 <code>touchmove</code> 或 
+        <code>touchend</code> 事件，则不会触发鼠标或单击事件，
+        由此产生的事件序列仅为:
       </p>
       <ol data-class="note-list">
         <li><code>touchstart</code></li>
         <li>
-          Zero or more <code>touchmove</code> events, depending on movement of
-          the finger
+          零个或多个 <code>touchmove</code> 事件，具体取决于手指的移动
         </li>
         <li><code>touchend</code></li>
       </ol>
@@ -1342,52 +1324,52 @@ partial interface mixin GlobalEventHandlers {
 
     <div class="note">
       <p>
-        Even if a user agent supports Touch Events, this does not necessarily
-        mean that a touchscreen is the only input mechanism available to
-        users. Particularly in the case of touch-enabled laptops, or
-        traditional "touch only" devices (such as phones and tablets) with
-        paired external input devices, users may use the touchscreen in
-        conjunction with a trackpad, mouse or keyboard. For this reason,
-        developers should avoid binding event listeners with "either touch or
-        mouse/keyboard" conditional code, as this results in sites/application
-        that become touch-exclusive, preventing users from being able to use
-        any other input mechanism.
+        即使用户代理支持 Touch Events ，这也不一定意味着触摸屏(touchscreen)
+        是用户唯一可以用用的输入机制。特别是在支持触摸(touch-enabled)
+        的笔记本电脑或附带有配对的外部输入设备的传统的 "仅触摸" 设备
+        (如手机和平板电脑)的情况下，用户可以将触摸屏与触控板、鼠标或键盘结合
+        (conjunction)使用。因此，开发人员应避免将事件监听器与 
+        "要么是触摸要么是鼠标/键盘" 这类条件代码绑定，因为这会导致网站 / 
+        应用程序成为触摸独占(touch-exclusive)，
+        从而阻止用户使用所有其他的输入机制。
       </p>
       <pre class="example"><code>
-// conditional "touch OR mouse/keyboard" event binding
-// DON'T DO THIS, as it makes interactions touch-exclusive
-// on devices that have both touch and mouse/keyboard
+// 有条件的 "要么是触摸要么是鼠标/键盘" 事件绑定
+// 不要这么做，因为这会使在那些支持触摸也支持
+// 鼠标/键盘的设备的交互变成触摸独占
 
 if ('ontouchstart' in window) {
-  // set up event listeners for touch
+  // 为触摸设置事件监听器
   target.addEventListener('touchend', ...);
   ...
 } else {
-  // set up event listeners for mouse/keyboard
+  // 为鼠标/键盘设置事件监听器
   target.addEventListener('click', ...);
   ...
 }
 </code></pre>
       <p>
-        Instead, developers should handle different forms of input
-        concurrently.
+        相反，开发人员应该同时(concurrently)处理不同形式的输入。
       </p>
       <pre class="example"><code>
-// concurrent "touch AND mouse/keyboard" event binding
+// 并发进行 "触摸和鼠标/键盘" 事件绑定
 
-// set up event listeners for touch
+// 为触摸设置事件监听器
 target.addEventListener('touchend', function(e) {
-  // prevent compatibility mouse events and click
+  // 阻止兼容性的鼠标事件和单击
   e.preventDefault();
   ...
 });
 ...
 
-// set up event listeners for mouse/keyboard
+// 为鼠标/键盘设置事件监听器
 target.addEventListener('click', ...);
 ...
 </code></pre>
       <p>
+        为了避免为触摸处理两次相同的交互（一次用于触摸事件，一次用于兼容鼠标事件），
+        开发人员应确保取消触摸事件，从而抑制任何进一步的鼠标或单击事件的生成。
+        或者，请参阅InputDeviceCapabilities API，了解检测因触摸事件而生成的鼠标事件的方法。
         To avoid processing the same interaction twice for touch (once for the
         touch event, and once for the compatibility mouse events), developers
         should make sure to <a href="#dfn-canceled-event">cancel</a> the touch
