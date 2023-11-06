@@ -2,7 +2,7 @@
  * @Author: mangwu                                                             *
  * @File: custom-script.js                                                     *
  * @Date: 2023-10-27 02:02:19                                                  *
- * @LastModifiedDate: 2023-10-30 17:21:20                                      *
+ * @LastModifiedDate: 2023-11-06 10:22:01                                      *
  * @ModifiedBy: mangwu                                                         *
  * -----------------------                                                     *
  * Copyright (c) 2023 mangwu                                                   *
@@ -202,11 +202,36 @@ function translateDfnType(originDfn) {
  * @description 翻译标题
  */
 function translateTitle() {
-  // 标题
+  // 一致性标题
   const element = getElement("#x2-conformance");
   if (element && element.childNodes.length > 1) {
     element.childNodes[1].textContent = "一致性";
   }
+  // 一致性目录标题
+  const tocxref = getElement("#toc > ol > li:nth-child(4) > a");
+  console.log(tocxref);
+  if (tocxref && tocxref.childNodes.length > 1) {
+    tocxref.childNodes[1].textContent = "一致性";
+    console.log(tocxref.childNodes[1]);
+  }
+  // 引用标题
+  let normativeReferences = getElement("#generatedID");
+  normativeReferences.id = "normative-references";
+  let selfLink = getElement("#normative-references > div > a");
+  selfLink.setAttribute("href", "#normative-references");
+  normativeReferences = getElement("#generatedID");
+  normativeReferences.id = "informative-references";
+  selfLink = getElement("#informative-references > div > a");
+  selfLink.setAttribute("href", "#informative-references");
+  // 引用目录标题
+  const c1 = getElement(
+    "#toc > ol > li:nth-child(15) > ol > li:nth-child(1) > a"
+  );
+  c1.setAttribute("href", "#normative-references");
+  const c2 = getElement(
+    "#toc > ol > li:nth-child(15) > ol > li:nth-child(2) > a"
+  );
+  c2.setAttribute("href", "#informative-references");
 }
 
 /**

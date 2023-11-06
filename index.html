@@ -338,7 +338,7 @@
   </section>
 
   <section>
-    <h2><dfn>Touch</dfn> 接口</h2>
+    <h2 id="touch-interface"><dfn>Touch</dfn> 接口</h2>
     <p>
       此接口描述触摸事件的单个 <a>touch point</a> 。<a><code>Touch</code></a>
       对象是不可变的(immutable); 创建后，其属性不得更改。
@@ -573,7 +573,7 @@ interface Touch {
   </section>
 
   <section>
-    <h2><dfn>TouchList</dfn> 接口</h2>
+    <h2 id="touchlist-interface"><dfn>TouchList</dfn> 接口</h2>
     <p>
       该接口定义了触摸事件的各个(individual)接触点的列表。
       <a><code>TouchList</code></a> 对象是不可变的(immutable); 创建后，
@@ -608,7 +608,7 @@ interface TouchList {
   </section>
 
   <section>
-    <h2><dfn>TouchEvent</dfn> 接口</h2>
+    <h2 id="touchevent-interface"><dfn>TouchEvent</dfn> 接口</h2>
     <p>
       此接口定义了 <a><code>touchstart</code></a> 、
       <a><code>touchend</code></a> 、 <a><code>touchmove</code></a> 和
@@ -734,7 +734,7 @@ interface TouchEvent : UIEvent {
     </dl>
 
     <section class="informative">
-      <h2>TouchEvent 接口实现者的注释</h2>
+      <h2 id="touchevent-implementer-s-note">TouchEvent 接口实现者的注释</h2>
       <div class="note">
         <p>
           用户代理应确保来自给定 <a><code>TouchEvent</code></a> 中的所有可用
@@ -754,7 +754,7 @@ interface TouchEvent : UIEvent {
     </section>
 
     <section class="informative">
-      <h2>用例</h2>
+      <h2 id="usage-examples">用例</h2>
 
       <p>
         下面的示例演示了 <a><code>TouchEvent</code></a> 中定义的不同
@@ -762,7 +762,7 @@ interface TouchEvent : UIEvent {
       </p>
 
       <section>
-        <h3>
+        <h3 id="touchevent-touches-targettouches">
           一个 <a><code>TouchEvent</code></a> 的 <code>touches</code> 和
           <code>targetTouches</code>
         </h3>
@@ -819,7 +819,7 @@ document.getElementById('touchable').addEventListener('touchstart', function(ev)
       </section>
 
       <section>
-        <h3>
+        <h3 id="changedtouches-of-a-touchevent">
           一个 <a><code>TouchEvent</code></a> 的 <code>changedTouches</code>
         </h3>
 
@@ -855,7 +855,7 @@ document.getElementById('touchable').addEventListener('touchend', function(ev) {
       </section>
 
       <section>
-        <h3>
+        <h3 id="firing-a-synthetic-touchevent-from-script">
           触发来自于脚本合成的 <a><code>TouchEvent</code></a>
         </h3>
 
@@ -896,7 +896,7 @@ document.body.dispatchEvent(touchEvent);
     </section>
 
     <section class="informative">
-      <h2>
+      <h2 id="list-of-touchevent-types">
         <a><code>TouchEvent</code></a> 事件类型列表
       </h2>
 
@@ -1137,7 +1137,7 @@ document.body.dispatchEvent(touchEvent);
   </section>
 
   <section>
-    <h2>重新定位目标(Retargeting)</h2>
+    <h2 id="retargeting">重新定位目标(Retargeting)</h2>
     <p>
       以下部分介绍了 [[!WHATWG-DOM]] 中定义的
       <a href="https://dom.spec.whatwg.org/#event-retargeting-steps">
@@ -1181,7 +1181,7 @@ document.body.dispatchEvent(touchEvent);
   </section>
 
   <section>
-    <h2>有条件地暴露遗留触摸事件</h2>
+    <h2 id="conditionally-exposing-legacy-touch-event-apis">有条件地暴露遗留触摸事件</h2>
     <p>
       用户代理有一个关联的布尔类型 <dfn data-export="暴露遗留触摸事件API">
         expose legacy touch event APIs</dfn> (暴露遗留触摸事件 APIs )，其值由
@@ -1198,7 +1198,9 @@ document.body.dispatchEvent(touchEvent);
   </section>
 
   <section>
-    <h2><code>GlobalEventHandlers</code> 混入(mixin)的扩展</h2>
+    <h2 id="extensions-to-the-globaleventhandlers-mixin">
+      <code>GlobalEventHandlers</code> 混入(mixin)的扩展
+    </h2>
     <p>
       以下部分描述了在 [[!HTML5]] 中定义的现有
       <dfn data-cite="HTML5#globaleventhandlers">GlobalEventHandlers</dfn> 混入
@@ -1380,7 +1382,7 @@ target.addEventListener('click', ...);
   </section>
 
   <section>
-    <h2>术语表</h2>
+    <h2 id="glossary">术语表</h2>
 
     <dl>
       <dt><dfn>active touch point</dfn></dt>
@@ -1408,7 +1410,7 @@ target.addEventListener('click', ...);
   </section>
 
   <section class="appendix informative">
-    <h2>鸣谢</h2>
+    <h2 id="acknowledgements">鸣谢</h2>
     <p>
       非常感谢 WebKit 工程师开发了作为本规范基础的模型，感谢 Neil Roberts
       (SitePen) 对 WebKit 触摸事件的总结，感谢 Peter Paul Koch (PPK)
@@ -1431,7 +1433,7 @@ target.addEventListener('click', ...);
   </section>
 
   <section class="appendix informative">
-    <h2>自上次发布以来的更改</h2>
+    <h2 id="changes-since-last-publication">自上次发布以来的更改</h2>
     <p>
       这是自 <a href="http://www.w3.org/TR/touch-events/">
         2013年10月10日的正式提案</a> 发布以来所做的主要修改的总结。
